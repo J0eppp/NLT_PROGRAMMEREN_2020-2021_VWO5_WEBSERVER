@@ -8,6 +8,7 @@ type Product struct {
 	MainCategories []string `json:"mainCategories"`
 	SubCategory string `json:"subCategory"`
 	Brand string `json:"brand"`
+	Images []Image `json:"images"`
 }
 
 func (product *Product) SetMainProductCategories() {

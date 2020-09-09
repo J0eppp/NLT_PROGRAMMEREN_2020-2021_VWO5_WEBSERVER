@@ -9,7 +9,7 @@ func main() {
 	var ah = types.AHConnector{}
 	ah.GetAnonymousAccessToken()
 
-	ah.GetProductByBarcode("8718906445338")
+	//ah.GetProductByBarcode("8718906445338")
 	var product = ah.GetProductByBarcode("8717677334117")
 	fmt.Printf("%+v\n", product)
 }
