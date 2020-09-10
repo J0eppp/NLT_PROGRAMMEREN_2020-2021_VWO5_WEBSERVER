@@ -10,6 +10,9 @@ func main() {
 	ah.GetAnonymousAccessToken()
 
 	//ah.GetProductByBarcode("8718906445338")
-	var product = ah.GetProductByBarcode("8717677334117")
+	product, err := ah.GetProductByBarcode("8717677334117")
+	if err != nil {
+		fmt.Println(err)
+	}
 	fmt.Printf("%+v\n", product)
 }

@@ -14,10 +14,12 @@ func main() {
 
 	apiRouter := router.PathPrefix("/api").Subrouter()
 	apiRouter.Use(middleware.Logger)
+	apiRouter.Use(middleware.SetResponseTypeJSON)
 
 	router.HandleFunc("/", handlers.Home)
 
 	apiRouter.HandleFunc("/", apiHandlers.Api)
+	apiRouter.HandleFunc("/product", apiHandlers.GetProduct).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8000", router))
 }

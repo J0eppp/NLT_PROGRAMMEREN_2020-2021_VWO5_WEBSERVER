@@ -12,5 +12,7 @@ type Product struct {
 }
 
 func (product *Product) SetMainProductCategories() {
+	// Product.SetMainProductCategories splits the Product.MainCategory on every ", " and saves the []string to Product.MainCategories
+	// :returns nil
 	product.MainCategories = strings.Split(strings.ToLower(product.MainCategory), ", ")
 }

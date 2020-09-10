@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -12,69 +11,95 @@ type AHConnector struct {
 	AccessToken string `json:"accessToken"`
 }
 
-func (ah *AHConnector) GetProductByBarcode(barcode string) Product {
+func (ah *AHConnector) GetProductByBarcode(barcode string) (Product, error) {
+	// AHConnector.GetProductByBarcode sends a HTTP request to the AH API to retrieve the product information according to the barcode
+	// :param barcode: string
+	// :returns Product
+	// :returns error
 	var p = Product{}
 
+	// Create a request object
 	req, err := http.NewRequest("GET", "https://ms.ah.nl/mobile-services/product/search/v1/gtin/" + barcode, nil)
 	if err != nil {
-		log.Fatalln(err)
+		return p, err
 	}
 
+	// Set the right headers
 	req.Header.Set("Authorization", "Bearer " + ah.AccessToken)
 	req.Header.Set("Host", "ms.ah.nl")
 	req.Header.Set("User-Agent", "android/6.29.3 Model/phone Android/7.0-API24")
 
+	// Execute the request object
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		log.Fatalln(err)
+		return p, err
 	}
+
 	defer resp.Body.Close()
 
+	// Read the response into a []byte
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatalln(err)
+		return p, err
 	}
 
+	// Unmarshal the []byte into *Product
 	json.Unmarshal(body, &p)
 
+	// Set the main categories attribute
 	p.SetMainProductCategories()
 
-	return p
+	// Return the product, no error
+	return p, nil
 }
 
-func (ah *AHConnector) GetAnonymousAccessToken() {
+func (ah *AHConnector) GetAnonymousAccessToken() error {
+	// AHConnector.GetAnonymousAccessToken requests an authentication token from the AH API and sets AHConnector.AccessToken
+	// :returns error
+
+	// Create the HTTP POST request body
 	requestBody, err := json.Marshal(map[string]string{
 		"client": "appie-anonymous",
 	})
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 
+	// Create a request object
 	req, err := http.NewRequest("POST", "https://ms.ah.nl/create-anonymous-member-token", bytes.NewBuffer(requestBody))
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 
+	// Set the right headers
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Host", "ms.ah.nl")
 	req.Header.Set("User-Agent", "android/6.29.3 Model/phone Android/7.0-API24")
 
+	// Execute the request object
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 	defer resp.Body.Close()
 
+	// Read the response into a []byte
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 
+	// Create a temp struct to store the access token
 	var r struct{
 		AccessToken string `json:"access_token"`
 	}
 
+	// Unmarshal the access token
 	json.Unmarshal(body, &r)
 
+	// Set the access token of the AHConnector instance
 	ah.AccessToken = r.AccessToken
+
+	// Return nil because there was no error
+	return nil
 }
