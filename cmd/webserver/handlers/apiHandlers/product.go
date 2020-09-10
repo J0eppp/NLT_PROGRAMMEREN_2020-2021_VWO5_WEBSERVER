@@ -3,7 +3,7 @@ package apiHandlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/data/types"
+	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/memory"
 	"net/http"
 	"unicode"
 )
@@ -38,9 +38,7 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 	if isNumeric {
 		// The entered productName is a barcode
 
-		var ah = types.AHConnector{}
-		ah.GetAnonymousAccessToken()
-		p, err := ah.GetProductByBarcode(productName)
+		p, err := memory.AHConnector.GetProductByBarcode(productName)
 		if err != nil {
 			fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
 			return
