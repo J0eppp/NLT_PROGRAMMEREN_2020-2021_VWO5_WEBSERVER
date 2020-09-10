@@ -3,6 +3,7 @@ package types
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -12,10 +13,13 @@ type AHConnector struct {
 }
 
 func (ah *AHConnector) GetProductByBarcode(barcode string) (Product, error) {
-	// AHConnector.GetProductByBarcode sends a HTTP request to the AH API to retrieve the product information according to the barcode
+	// AHConnector.GetProductByBarcode gets the product information according to the barcode
 	// :param barcode: string
-	// :returns Product
-	// :returns error
+	// :return Product
+	// :return error
+
+	fmt.Println("Barcode..")
+
 	var p = Product{}
 
 	// Create a request object
@@ -53,9 +57,67 @@ func (ah *AHConnector) GetProductByBarcode(barcode string) (Product, error) {
 	return p, nil
 }
 
+func (ah *AHConnector) GetProductByQuery(query string) (Product, error) {
+	// AHConnector.GetProductByBarcode gets the product information according to the query
+	// :param query: string
+	// :return Product
+	// :return error
+
+	// NOTE: not done yet, response from AH is really weird
+
+	var p = Product{}
+
+	// Set the request body
+	requestBody, err := json.Marshal(map[string]string{
+		"sortOn": "RELEVANCE",
+		"page": "0",
+		"size": "0",
+		"query": query,
+	})
+	if err != nil {
+		return p, err
+	}
+
+	// Create a request object
+	req, err := http.NewRequest("GET", "https://ms.ah.nl/mobile-services/product/search/v2?sortOn=RELEVANCE", bytes.NewBuffer(requestBody))
+	if err != nil {
+		return p, err
+	}
+
+	// Set the right headers
+	req.Header.Set("Authorization", "Bearer " + ah.AccessToken)
+	req.Header.Set("Host", "ms.ah.nl")
+	req.Header.Set("User-Agent", "android/6.29.3 Model/phone Android/7.0-API24")
+
+	// Execute the request object
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return p, err
+	}
+
+	defer resp.Body.Close()
+
+	// Read the response into a []byte
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return p, err
+	}
+
+	fmt.Println(string(body))
+
+	//// Unmarshal the []byte into *Product
+	//json.Unmarshal(body, &p)
+	//
+	//// Set the main categories attribute
+	//p.SetMainProductCategories()
+
+	// Return the product, no error
+	return p, nil
+}
+
 func (ah *AHConnector) GetAnonymousAccessToken() error {
 	// AHConnector.GetAnonymousAccessToken requests an authentication token from the AH API and sets AHConnector.AccessToken
-	// :returns error
+	// :return error
 
 	// Create the HTTP POST request body
 	requestBody, err := json.Marshal(map[string]string{

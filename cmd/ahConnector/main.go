@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/data/types"
 )
 
@@ -10,9 +9,10 @@ func main() {
 	ah.GetAnonymousAccessToken()
 
 	//ah.GetProductByBarcode("8718906445338")
-	product, err := ah.GetProductByBarcode("8717677334117")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", product)
+	// product, err := ah.GetProductByBarcode("8717677334117")
+	ah.GetProductByQuery("cola")
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// fmt.Printf("%+v\n", product)
 }
