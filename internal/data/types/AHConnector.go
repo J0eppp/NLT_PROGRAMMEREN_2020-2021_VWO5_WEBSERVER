@@ -12,6 +12,70 @@ type AHConnector struct {
 	AccessToken string `json:"accessToken"`
 }
 
+func (ah *AHConnector) GetCategories() {
+	// AHConnector.GetCategories returns all the categories available
+	// :return nil
+
+	req, err := http.NewRequest("GET", "https://ms.ah.nl/mobile-services/v1/product-shelves/categories", nil)
+
+	if err != nil {
+		return
+	}
+
+	// Set the right headers
+	req.Header.Set("Authorization", "Bearer " + ah.AccessToken)
+	req.Header.Set("Host", "ms.ah.nl")
+	req.Header.Set("User-Agent", "android/6.29.3 Model/phone Android/7.0-API24")
+
+	// Execute the request object
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return
+	}
+
+	defer resp.Body.Close()
+
+	// Read the response into a []byte
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return
+	}
+
+	fmt.Println(string(body))
+}
+
+func (ah *AHConnector) GetSubCategories(categoryId int) {
+	// AHConnector.GetSubCategories returns all the available subcategories
+	// :param categoryId: int
+
+	// Create a request object
+	req, err := http.NewRequest("GET", "https://ms.ah.nl/mobile-services/product/detail/v3/fir/" + string(categoryId), nil)
+	if err != nil {
+		return
+	}
+
+	// Set the right headers
+	req.Header.Set("Authorization", "Bearer " + ah.AccessToken)
+	req.Header.Set("Host", "ms.ah.nl")
+	req.Header.Set("User-Agent", "android/6.29.3 Model/phone Android/7.0-API24")
+
+	// Execute the request object
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return
+	}
+
+	defer resp.Body.Close()
+
+	// Read the response into a []byte
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return
+	}
+
+	fmt.Println(string(body))
+}
+
 func (ah *AHConnector) GetProductByBarcode(barcode string) (Product, error) {
 	// AHConnector.GetProductByBarcode gets the product information according to the barcode
 	// :param barcode: string
