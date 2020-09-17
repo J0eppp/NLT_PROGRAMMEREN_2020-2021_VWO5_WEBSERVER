@@ -2,8 +2,8 @@ package main
 
 import (
 	"database/sql"
-	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/webserver/handlers"
-	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/webserver/handlers/apiHandlers"
+	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/ahRecipeFinderWebserver/handlers"
+	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/ahRecipeFinderWebserver/handlers/apiHandlers"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/data/types"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/memory"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/pkg/middleware"
@@ -17,7 +17,10 @@ import (
 func main() {
 	// Setup default things here
 	memory.AHConnector = types.AHConnector{}
-	memory.AHConnector.GetAnonymousAccessToken()
+	err := memory.AHConnector.GetAnonymousAccessToken()
+	if err != nil {
+		panic(err.Error())
+	}
 
 	d, err := sql.Open("mysql",  "root:Test123@unix(/var/run/mysqld/mysqld.sock)/ahRecipeFinder")
 	if err != nil {
