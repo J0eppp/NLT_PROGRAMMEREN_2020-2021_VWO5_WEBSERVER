@@ -1,4 +1,4 @@
-package apiHandlers
+package v1
 
 import (
 	"fmt"
@@ -6,5 +6,5 @@ import (
 )
 
 func Api(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Test!")
+	fmt.Fprintf(w, "{ \"message\": \"Hello there!\" }")
 }

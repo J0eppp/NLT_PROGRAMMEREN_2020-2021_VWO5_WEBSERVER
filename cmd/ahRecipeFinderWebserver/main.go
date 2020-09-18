@@ -3,7 +3,7 @@ package main
 import (
 	"database/sql"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/ahRecipeFinderWebserver/handlers"
-	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/ahRecipeFinderWebserver/handlers/apiHandlers"
+	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/ahRecipeFinderWebserver/handlers/apiHandlers/v1"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/data/types"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/memory"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/pkg/middleware"
@@ -39,9 +39,9 @@ func main() {
 
 	router.HandleFunc("/", handlers.Home)
 
-	apiV1Router.HandleFunc("/", apiHandlers.Api)
-	apiV1Router.HandleFunc("/product", apiHandlers.GetProduct).Methods("GET")
-	apiV1Router.HandleFunc("/product/search", apiHandlers.GetProductSearch).Methods("GET")
+	apiV1Router.HandleFunc("/", v1.Api)
+	apiV1Router.HandleFunc("/product", v1.GetProduct).Methods("GET")
+	apiV1Router.HandleFunc("/product/search", v1.GetProductSearch).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
