@@ -42,6 +42,10 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 		// The entered productName is a barcode
 		// Check if the product is already saved in the DB
 		rows, err := memory.DB.Query("SELECT barcode, title, mainCategory, subCategory, brand FROM products WHERE barcode = ?", productName)
+		if err != nil {
+			fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
+			return
+		}
 		defer rows.Close()
 		rows.Next()
 		rows.Scan(&p.Barcode, &p.Title, &p.MainCategory, &p.SubCategory, &p.Brand)
