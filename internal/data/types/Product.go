@@ -48,7 +48,7 @@ func (product *Product) SaveToDatabase(db *sql.DB) error {
 	}
 
 	// Barcode doesn't exist already, save it to the database
-	statement, err := db.Prepare("INSERT INTO products (barcode, title, mainCategory, subCategory, brand) VALUES (?, ?, ?, ?, ?)")
+	statement, err := db.Prepare("INSERT INTO products (barcode, title, mainCategory, subCategory, brand) VALUES (?, ?, ?, ?, ?);")
 	if err != nil {
 		return err
 	}

@@ -41,13 +41,9 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 	if isNumeric {
 		// The entered productName is a barcode
 		// Check if the product is already saved in the DB
-		rows, err := memory.DB.Query("SELECT `barcode`, `title`, `mainCategory`, `subCategory`, `brand` FROM products WHERE `barcode` = ?", productName)
+		rows, err := memory.DB.Query("SELECT barcode, title, mainCategory, subCategory, brand FROM products WHERE barcode = ?", productName)
 		defer rows.Close()
-		ok = rows.Next()
-		if !ok {
-			fmt.Fprintf(w, "{ 'error': true, 'message': 'Unknown error' }")
-			return
-		}
+		rows.Next()
 		rows.Scan(&p.Barcode, &p.Title, &p.MainCategory, &p.SubCategory, &p.Brand)
 		if p.Barcode == 0 {
 			// No result was found..
@@ -71,7 +67,7 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 		} else {
 			// Set the main categories and get the images
 			p.SetMainProductCategories()
-			rows, err := memory.DB.Query("SELECT width, height, URL FROM images WHERE barcode = ?", productName)
+			rows, err := memory.DB.Query("SELECT `width`, `height`, `URL` FROM `images` WHERE `barcode` = ?", productName)
 			defer rows.Close()
 			if err != nil {
 				fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
