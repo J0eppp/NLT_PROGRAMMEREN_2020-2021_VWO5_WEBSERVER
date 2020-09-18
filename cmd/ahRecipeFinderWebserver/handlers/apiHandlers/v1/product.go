@@ -43,7 +43,8 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 		// Check if the product is already saved in the DB
 		rows, err := memory.DB.Query("SELECT barcode, title, mainCategory, subCategory, brand FROM products WHERE barcode = ?", productName)
 		if err != nil {
-			fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
+			//fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
+			json.NewEncoder(w).Encode(err)
 			return
 		}
 		defer rows.Close()
