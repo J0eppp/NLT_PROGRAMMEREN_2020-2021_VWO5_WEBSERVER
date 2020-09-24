@@ -22,7 +22,7 @@ func main() {
 		panic(err.Error())
 	}
 
-	d, err := sql.Open("mysql",  "root:Test123@unix(/var/run/mysqld/mysqld.sock)/ahRecipeFinder")
+	d, err := sql.Open("mysql",  "ahRecipeFinder:Test123@unix(/var/run/mysqld/mysqld.sock)/ahRecipeFinder")
 	//d, err := sql.Open("sqlite3", "file:locked.sqlite3?cache=shared")
 	//d, err := sql.Open("sqlite3", "./database.db?cache=shared")
 	if err != nil {
