@@ -23,27 +23,9 @@ func main() {
 	}
 
 	d, err := sql.Open("mysql",  "ahRecipeFinder:Test123@unix(/var/run/mysqld/mysqld.sock)/ahRecipeFinder")
-	//d, err := sql.Open("sqlite3", "file:locked.sqlite3?cache=shared")
-	//d, err := sql.Open("sqlite3", "./database.db?cache=shared")
 	if err != nil {
 		panic(err)
 	}
-	//d.SetMaxOpenConns(1)
-	//
-	//stmt, err := d.Prepare("CREATE TABLE IF NOT EXISTS products (/*`ID` INT NOT NULL, */`barcode` TEXT NOT NULL, `title` TEXT NOT NULL, `mainCategory` TEXT NOT NULL,\n    `subCategory` TEXT NOT NULL, `brand` TEXT NOT NULL/*, PRIMARY KEY (ID)*/);")
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-	//stmt.Exec()
-	//
-	//stmt, err = d.Prepare("CREATE TABLE IF NOT EXISTS images (/*`ID` INT NOT NULL, */`barcode` TEXT NOT NULL, `width` INT NOT NULL, `height` INT NOT NULL, `URL` TEXT NOT NULL/*, PRIMARY KEY (ID)*/);")
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-	//stmt.Exec()
-	//
-	//
-	//fmt.Println("Done!!")
 
 	memory.DB = d
 
@@ -60,6 +42,7 @@ func main() {
 	apiV1Router.HandleFunc("/", v1.Api)
 	apiV1Router.HandleFunc("/product", v1.GetProduct).Methods("GET")
 	apiV1Router.HandleFunc("/product/search", v1.GetProductSearch).Methods("GET")
+	apiV1Router.HandleFunc("/recipe/search", v1.GetRecipeSearch).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

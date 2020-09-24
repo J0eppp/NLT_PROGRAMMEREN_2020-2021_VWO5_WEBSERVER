@@ -5,11 +5,10 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"regexp"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	)
+)
 
 func exampleScrape() {
 	// Request the HTML page.
@@ -55,17 +54,20 @@ func getIngredientsFromRecipe(url string) {
 	doc.Find("li").Each(func(i int, s *goquery.Selection) {
 		attr, _ := s.Attr("itemprop")
 		if attr == "ingredients" {
-			//list := strings.Split(strings.Replace(s.Text(), "\n", "", -1), " ")
-			//fmt.Println(list[len(list) - 1])
+			list := strings.Split(strings.Replace(s.Text(), "\n", "", -1), " ")
+			fmt.Println(list[len(list) - 1])
 
-			reg, err := regexp.Compile("[^a-zA-Z() ]+")
-			if err != nil {
-				log.Fatal(err)
-			}
+			//reg, err := regexp.Compile("[^a-zA-Z() ]+")
+			//if err != nil {
+			//	log.Fatal(err)
+			//}
+			//
+			//str := reg.ReplaceAllString(strings.Replace(s.Text(), "\n", "", -1), "")
+			//
+			//reg1, err := regexp.Compile("[]+")
 
-			str := reg.ReplaceAllString(strings.Replace(s.Text(), "\n", "", -1), "")
-
-			fmt.Println(strings.Replace(str, " ", "", 1))
+			//fmt.Println(strings.Replace(str, " ", "", 1))
+			//fmt.Println(s.Text())
 		}
 	})
 }
