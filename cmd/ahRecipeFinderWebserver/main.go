@@ -23,11 +23,6 @@ func main() {
 	}
 
 	d, err := sql.Open("mysql",  "ahRecipeFinder:Test123@unix(/var/run/mysqld/mysqld.sock)/ahRecipeFinder")
-<<<<<<< HEAD
-	//d, err := sql.Open("sqlite3", "file:locked.sqlite3?cache=shared")
-	//d, err := sql.Open("sqlite3", "./database.db?cache=shared")
-=======
->>>>>>> 5670232461047b18d90d7bec35efb77475f071c8
 	if err != nil {
 		panic(err)
 	}
@@ -48,6 +43,7 @@ func main() {
 	apiV1Router.HandleFunc("/product", v1.GetProduct).Methods("GET")
 	apiV1Router.HandleFunc("/product/search", v1.GetProductSearch).Methods("GET")
 	apiV1Router.HandleFunc("/recipe/search", v1.GetRecipeSearch).Methods("GET")
+	apiV1Router.HandleFunc("/recipe", v1.GetRecipe).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
