@@ -34,6 +34,7 @@ func main() {
 	apiRouter := router.PathPrefix("/api").Subrouter()
 	apiRouter.Use(middleware.Logger)
 	apiRouter.Use(middleware.SetResponseTypeJSON)
+	apiRouter.Use(middleware.EnableCors)
 
 	apiV1Router := apiRouter.PathPrefix("/v1").Subrouter()
 
