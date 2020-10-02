@@ -93,5 +93,6 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	// Return the product object to the user 
 	json.NewEncoder(w).Encode(p)
 }

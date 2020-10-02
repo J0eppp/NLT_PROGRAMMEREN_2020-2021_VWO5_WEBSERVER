@@ -42,7 +42,7 @@ func main() {
 
 	apiV1Router.HandleFunc("/", v1.Api)
 	apiV1Router.HandleFunc("/product", v1.GetProduct).Methods("GET")
-	apiV1Router.HandleFunc("/product/search", v1.GetProductSearch).Methods("GET")
+	// apiV1Router.HandleFunc("/product/search", v1.GetProductSearch).Methods("GET")
 	apiV1Router.HandleFunc("/recipe/search", v1.GetRecipeSearch).Methods("GET")
 	apiV1Router.HandleFunc("/recipe", v1.GetRecipe).Methods("GET")
 

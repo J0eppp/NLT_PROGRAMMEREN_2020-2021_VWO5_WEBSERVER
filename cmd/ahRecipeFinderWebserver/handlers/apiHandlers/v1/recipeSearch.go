@@ -11,6 +11,7 @@ import (
 func GetRecipeSearch(w http.ResponseWriter, r *http.Request) {
 	reqBody, _ := ioutil.ReadAll(r.Body)
 
+	// Get the ingredients sent by the user
 	var req struct{
 		Ingredients []string `json:"ingredients"`
 	}
@@ -33,5 +34,6 @@ func GetRecipeSearch(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	// Return all the ingredient objects to the user
 	json.NewEncoder(w).Encode(ingredients)
 }
