@@ -25,6 +25,7 @@ func main() {
 	}
 
 	d, err := sql.Open("mysql",  "ahRecipeFinder:Test123@unix(/var/run/mysqld/mysqld.sock)/ahRecipeFinder")
+	//d, err := sql.Open("mysql", "ahRecipeFinder:Test123@tcp(192.168.0.220:3306)/ahRecipeFinder")
 	if err != nil {
 		panic(err)
 	}
