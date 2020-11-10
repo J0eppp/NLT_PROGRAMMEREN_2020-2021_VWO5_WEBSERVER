@@ -82,8 +82,6 @@ func (ah *AHConnector) GetProductByBarcode(barcode string) (Product, error) {
 	// :return Product
 	// :return error
 
-	fmt.Println("Barcode..")
-
 	var p = Product{}
 
 	// Create a request object

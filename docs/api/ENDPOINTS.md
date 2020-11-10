@@ -7,3 +7,4 @@
         * /recipe/
             * /?recipe={int}            (GET) - Get a recipe saved in the database                                      (READY)
             * /search                   (GET) - Get the recipe ID by sending ingredients # USES GET REQUEST BODY        (READY)
+  

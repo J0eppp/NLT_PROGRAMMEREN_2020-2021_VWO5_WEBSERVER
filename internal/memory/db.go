@@ -1,5 +1,7 @@
 package memory
 
-import "database/sql"
+import (
+	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/database"
+)
 
-var DB *sql.DB
+var DB *database.Database

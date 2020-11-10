@@ -27,26 +27,27 @@ func GetRecipe(w http.ResponseWriter, r *http.Request) {
 	var recipe types.Recipe
 
 	// Get the recipe from the database based on the ID
-	rows, err := memory.DB.Query("SELECT * FROM recipes WHERE ID = ?", recipeID)
-	defer rows.Close()
-	if err != nil {
-		json.NewEncoder(w).Encode(err)
-	}
-	rows.Next()
-	rows.Scan(&recipe.ID, &recipe.URL, &recipe.ImageURL, &recipe.Name)
-	if recipe.ID == 0 {
+	recipe = memory.DB.GetRecipe(int(recipeID))
+	//rows, err := memory.DB.Query("SELECT * FROM recipes WHERE ID = ?", recipeID)
+	//defer rows.Close()
+	//if err != nil {
+	//	json.NewEncoder(w).Encode(err)
+	//}
+	//rows.Next()
+	//rows.Scan(&recipe.ID, &recipe.URL, &recipe.ImageURL, &recipe.Name)
+	if recipe.ID == -1 {
 		fmt.Fprintf(w, "{ \"error\": true, \"message\": \"There is no recipe with that ID\" }")
 		return
 	}
 
-	// Select all the ingredients based on the recipeID
-	rows, err = memory.DB.Query("SELECT name FROM ingredients WHERE recipeID = ?", recipe.ID)
-	defer rows.Close()
-	for rows.Next() {
-		var ingredient types.Ingredient
-		rows.Scan(&ingredient.Ingredient)
-		recipe.Ingredients = append(recipe.Ingredients, ingredient.Ingredient)
-	}
+	//// Select all the ingredients based on the recipeID
+	//rows, err = memory.DB.Query("SELECT name FROM ingredients WHERE recipeID = ?", recipe.ID)
+	//defer rows.Close()
+	//for rows.Next() {
+	//	var ingredient types.Ingredient
+	//	rows.Scan(&ingredient.Ingredient)
+	//	recipe.Ingredients = append(recipe.Ingredients, ingredient.Ingredient)
+	//}
 
 	// Send the recipe object to the user
 	json.NewEncoder(w).Encode(recipe)

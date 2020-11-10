@@ -1,11 +1,11 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/ahRecipeFinderWebserver/handlers"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/cmd/ahRecipeFinderWebserver/handlers/apiHandlers/v1"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/data/types"
+	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/database"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/memory"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/pkg/middleware"
 	"github.com/gorilla/mux"
@@ -24,13 +24,15 @@ func main() {
 		fmt.Println(err.Error())
 	}
 
-	d, err := sql.Open("mysql",  "ahRecipeFinder:Test123@unix(/var/run/mysqld/mysqld.sock)/ahRecipeFinder")
-	//d, err := sql.Open("mysql", "ahRecipeFinder:Test123@tcp(192.168.0.220:3306)/ahRecipeFinder")
+	d := database.Database{}
+
+	err = d.Open()
+
 	if err != nil {
 		panic(err)
 	}
 
-	memory.DB = d
+	memory.DB = &d
 
 	router := mux.NewRouter().StrictSlash(true)
 

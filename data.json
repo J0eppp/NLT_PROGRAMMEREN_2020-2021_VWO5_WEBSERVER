@@ -1,0 +1,156 @@
+{
+	"products": [
+		{
+			"title": "AH Maïswafels",
+			"barcode": 8718906445338,
+			"mainCategory": "Ontbijtgranen, broodbeleg, tussendoor",
+			"mainCategories": [
+				"ontbijtgranen",
+				"broodbeleg",
+				"tussendoor"
+			],
+			"subCategory": "Maiswafels",
+			"brand": "AH",
+			"images": [
+				{
+					"height": 48,
+					"width": 48,
+					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_48x48_GIF.GIF"
+				},
+				{
+					"height": 80,
+					"width": 80,
+					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_80x80_JPG.JPG"
+				},
+				{
+					"height": 200,
+					"width": 200,
+					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_200x200_JPG.JPG"
+				},
+				{
+					"height": 708,
+					"width": 708,
+					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_LowRes_JPG.JPG"
+				}
+			]
+		}
+	],
+	"recipes": [
+		{
+			"id": 1,
+			"url": "https://www.ah.nl/allerhande/recept/R-R1194307/pasta-met-rode-saus",
+			"name": "pasta-met-rode-saus",
+			"imageUrl": "https://static.ah.nl/static/recepten/img_RAM_PRD137625_445x297_JPG.jpg",
+			"ingredients": [
+				"middelgrote ui",
+				"teen knoflook",
+				"wortelen",
+				"milde olijfolie",
+				"tomatenblokjes in blik",
+				"gedroogde Italiaanse kruiden",
+				"volkorenspahetti",
+				"takjes verse basilicum"
+			]
+		},
+		{
+			"id": 2,
+			"url": "https://www.ah.nl/allerhande/recept/R-R1194308/kipgehaktballetjes",
+			"name": "kipgehaktballetjes",
+			"imageUrl": "https://static.ah.nl/static/recepten/img_RAM_PRD137620_445x297_JPG.jpg",
+			"ingredients": [
+				"sneetjes volkorenbrood",
+				"halfvolle mk",
+				"salade-ui",
+				"teen knoflook",
+				"kipehakt naturel",
+				"paprikapoeder",
+				"milde olijfolie"
+			]
+		},
+		{
+			"id": 3,
+			"url": "https://www.ah.nl/allerhande/recept/R-R1194309/chips-met-guacamole",
+			"name": "chips-met-guacamole",
+			"imageUrl": "https://static.ah.nl/static/recepten/img_RAM_PRD137616_445x297_JPG.jpg",
+			"ingredients": [
+				"tortillawraps",
+				"paprikapoeder",
+				"gemalen komijn",
+				"eetrijpe avocado's",
+				"limoen",
+				"sjalot",
+				"snoeptomaatjes"
+			]
+		},
+		{
+			"id": 4,
+			"url": "https://www.ah.nl/allerhande/recept/R-R1194312/friet-met-mayo",
+			"name": "friet-met-mayo",
+			"imageUrl": "https://static.ah.nl/static/recepten/img_RAM_PRD137618_445x297_JPG.jpg",
+			"ingredients": [
+				"frietaardappelen",
+				"zoete aardappelen",
+				"zonnebloemolie",
+				"mayonaise",
+				"magere yoghurt"
+			]
+		},
+		{
+			"id": 5,
+			"url": "https://www.ah.nl/allerhande/recept/R-R1194313/sterrensoep",
+			"name": "sterrensoep",
+			"imageUrl": "https://static.ah.nl/static/recepten/img_RAM_PRD137627_445x297_JPG.jpg",
+			"ingredients": [
+				"gele paprika",
+				"bosuitje",
+				"wortelen",
+				"stengel bleekselderij",
+				"½ courgette",
+				"teen knoflook",
+				"milde olijfolie",
+				"ras  hanout",
+				"tomatenblokjes in blik",
+				"kikkererwten in blik",
+				"vermicelli lass noodles soe-oen",
+				"sneetjes volkorenbrood",
+				"½  verse platte peterselie"
+			]
+		},
+		{
+			"id": 6,
+			"url": "https://www.ah.nl/allerhande/recept/R-R1194314/tortillafeest",
+			"name": "tortillafeest",
+			"imageUrl": "https://static.ah.nl/static/recepten/img_RAM_PRD137629_445x297_JPG.jpg",
+			"ingredients": [
+				"kropjes babyromainesla",
+				"zwarte bonen in blik",
+				"snoeproente tomatenmix",
+				"snoeppaprika's",
+				"bosuitjes",
+				"mais in blik",
+				"tuinkers",
+				"maere kwark",
+				"arachideolie",
+				"veetarische basis rulstukjes",
+				"gemalen komijn",
+				"volkoren tortillawraps"
+			]
+		},
+		{
+			"id": 7,
+			"url": "https://www.ah.nl/allerhande/recept/R-R1194315/nasitorentje",
+			"name": "nasitorentje",
+			"imageUrl": "https://static.ah.nl/static/recepten/img_RAM_PRD137622_445x297_JPG.jpg",
+			"ingredients": [
+				"zilvervliesrijst",
+				"bosuitjes",
+				"tenen knoflook",
+				"rode paprika's",
+				"arachideolie",
+				"diepvries tuinerwten",
+				"ketjap manis",
+				"middelgrote eieren"
+			]
+		}
+	]
+}
