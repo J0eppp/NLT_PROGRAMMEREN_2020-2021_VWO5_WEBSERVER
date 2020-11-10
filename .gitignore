@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+cmd/ahRecipeFinderWebserver/ahRecipeFinderWebserverho
 
 # Test binary, built with `go test -c`
 *.test
