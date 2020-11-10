@@ -68,26 +68,19 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 		} else {
 			// Set the main categories
 			p.SetMainProductCategories()
-			//	rows, err := memory.DB.Query("SELECT `width`, `height`, `URL` FROM `images` WHERE `barcode` = ?", productName)
-			//	defer rows.Close()
-			//	if err != nil {
-			//		fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
-			//		return
-			//	}
-			//	for rows.Next() {
-			//		var img types.Image
-			//		rows.Scan(&img.Width, &img.Height, &img.URL)
-			//		p.Images = append(p.Images, img)
-			//	}
-			//}
-			//} else {
-			// The entered productName is a name (string)
-			p, err = memory.AHConnector.GetProductByQuery(productName)
-			if err != nil {
-				fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
-				return
-			}
 		}
+	} else {
+		// The entered productName is a name (string)
+		p, err = memory.AHConnector.GetProductByQuery(productName)
+		if err != nil {
+			fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
+			return
+		}
+	}
+
+	if isNumeric {
+		barcode, _ := strconv.Atoi(productName)
+		p.Barcode = barcode
 	}
 
 	// Return the product object to the user 
