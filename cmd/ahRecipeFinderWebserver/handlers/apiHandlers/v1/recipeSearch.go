@@ -11,7 +11,7 @@ import (
 )
 
 func like(base string, sub string) bool {
-	return strings.Contains(base, sub)
+	return strings.Contains(strings.ToLower(base), strings.ToLower(sub))
 }
 
 func GetRecipeSearch(w http.ResponseWriter, r *http.Request) {
