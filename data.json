@@ -1,40 +1,6 @@
 {
 	"products": [
 		{
-			"title": "AH Maïswafels",
-			"barcode": "",
-			"mainCategory": "Ontbijtgranen, broodbeleg, tussendoor",
-			"mainCategories": [
-				"ontbijtgranen",
-				"broodbeleg",
-				"tussendoor"
-			],
-			"subCategory": "Maiswafels",
-			"brand": "AH",
-			"images": [
-				{
-					"height": 48,
-					"width": 48,
-					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_48x48_GIF.GIF"
-				},
-				{
-					"height": 80,
-					"width": 80,
-					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_80x80_JPG.JPG"
-				},
-				{
-					"height": 200,
-					"width": 200,
-					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_200x200_JPG.JPG"
-				},
-				{
-					"height": 708,
-					"width": 708,
-					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_LowRes_JPG.JPG"
-				}
-			]
-		},
-		{
 			"title": "Tony's Chocolonely Puur",
 			"barcode": "",
 			"mainCategory": "Snoep, koek, chips",
@@ -147,7 +113,7 @@
 				"milde olijfolie",
 				"tomatenblokjes in blik",
 				"gedroogde Italiaanse kruiden",
-				"volkorenspahetti",
+				"volkorenspaghetti",
 				"takjes verse basilicum"
 			],
 			"url": "https://www.ah.nl/allerhande/recept/R-R1194307/pasta-met-rode-saus",

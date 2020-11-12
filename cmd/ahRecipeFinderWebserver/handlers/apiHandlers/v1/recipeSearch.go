@@ -12,7 +12,7 @@ import (
 
 func like(base string, sub string) bool {
 	fmt.Println(strings.ToLower(base))
-	strings.ToLower(sub)
+	fmt.Println(strings.ToLower(sub))
 	return strings.Contains(strings.ToLower(base), strings.ToLower(sub))
 }
 
@@ -41,21 +41,6 @@ func GetRecipeSearch(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-
-	// Search for the ingredients in the database
-	//for _, ingredient := range req.Ingredients {
-	//	rows, err := memory.DB.Query("SELECT * FROM ingredients WHERE name LIKE ?", "%" + ingredient + "%")
-	//	if err != nil {
-	//		json.NewEncoder(w).Encode(err)
-	//		return
-	//	}
-	//	var i types.Ingredient
-	//	rows.Next()
-	//	rows.Scan(&i.ID, &i.Ingredient, &i.RecipeID)
-	//	if i.ID != 0 {
-	//		ingredients = append(ingredients, i)
-	//	}
-	//}
 
 	// Return all the ingredient objects to the user
 	json.NewEncoder(w).Encode(ingredients)
