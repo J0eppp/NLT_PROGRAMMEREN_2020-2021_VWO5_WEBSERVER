@@ -11,6 +11,8 @@ import (
 )
 
 func like(base string, sub string) bool {
+	fmt.Println(strings.ToLower(base))
+	strings.ToLower(sub)
 	return strings.Contains(strings.ToLower(base), strings.ToLower(sub))
 }
 
