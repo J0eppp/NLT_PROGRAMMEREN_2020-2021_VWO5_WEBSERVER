@@ -2,7 +2,6 @@ package v1
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/data/types"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/memory"
 	"io/ioutil"
@@ -11,8 +10,6 @@ import (
 )
 
 func like(base string, sub string) bool {
-	fmt.Println(strings.ToLower(base))
-	fmt.Println(strings.ToLower(sub))
 	return strings.Contains(strings.ToLower(base), strings.ToLower(sub))
 }
 
@@ -24,7 +21,6 @@ func GetRecipeSearch(w http.ResponseWriter, r *http.Request) {
 		Ingredients []string `json:"ingredients"`
 	}
 	json.Unmarshal(reqBody, &req)
-	fmt.Printf("%+v\n", req)
 
 	var ingredients []types.Ingredient
 
@@ -36,7 +32,6 @@ func GetRecipeSearch(w http.ResponseWriter, r *http.Request) {
 						Ingredient: i,
 						RecipeID: recipe.ID,
 					})
-					fmt.Println(i)
 				}
 			}
 		}
