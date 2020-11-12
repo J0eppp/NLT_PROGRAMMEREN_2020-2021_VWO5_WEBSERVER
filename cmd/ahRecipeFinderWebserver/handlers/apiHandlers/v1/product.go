@@ -44,7 +44,7 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 		//barcode, _ := strconv.Atoi(productName)
 		p = memory.DB.GetProduct(productName)
 		if p.Barcode == "" {
-			// No result was found..
+			// No result was found in the database
 			p, err = memory.AHConnector.GetProductByBarcode(productName)
 			if err != nil {
 				fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
@@ -55,6 +55,12 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 				fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
 				return
 			}
+
+			if len(p.Title) == 0 {
+				json.NewEncoder(w).Encode(p)
+				return
+			}
+
 			p.Barcode = productName
 
 			//err = p.SaveToDatabase(memory.DB)
