@@ -12,14 +12,14 @@ type Database struct {
 	Recipes 	[]types.Recipe 		`json:"recipes"`
 }
 
-func (db *Database) GetProduct(barcode int) types.Product {
+func (db *Database) GetProduct(barcode string) types.Product {
 	for _, product := range db.Products {
 		if product.Barcode == barcode {
 			return product
 		}
 	}
 	return types.Product{
-		Barcode: -1,
+		Barcode: "",
 	}
 }
 

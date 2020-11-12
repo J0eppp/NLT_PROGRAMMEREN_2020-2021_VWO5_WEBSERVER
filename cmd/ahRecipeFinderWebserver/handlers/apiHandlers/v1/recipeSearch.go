@@ -22,7 +22,7 @@ func GetRecipeSearch(w http.ResponseWriter, r *http.Request) {
 		Ingredients []string `json:"ingredients"`
 	}
 	json.Unmarshal(reqBody, &req)
-	fmt.Printf("%+v\n", req);
+	fmt.Printf("%+v\n", req)
 
 	var ingredients []types.Ingredient
 

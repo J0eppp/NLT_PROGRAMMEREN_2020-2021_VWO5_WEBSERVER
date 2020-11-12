@@ -6,7 +6,6 @@ import (
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/data/types"
 	"github.com/J0eppp/NLT_PROGRAMMEREN_2020-2021_VWO5_WEBSERVER/internal/memory"
 	"net/http"
-	"strconv"
 	"unicode"
 )
 
@@ -42,21 +41,21 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 		// The entered productName is a barcode
 		// Check if the product is already saved in the DB
 		//rows, err := memory.DB.Query("SELECT barcode, title, mainCategory, subCategory, brand FROM products WHERE barcode = ?", productName)
-		barcode, _ := strconv.Atoi(productName)
-		p = memory.DB.GetProduct(barcode)
-		if p.Barcode == -1 {
+		//barcode, _ := strconv.Atoi(productName)
+		p = memory.DB.GetProduct(productName)
+		if p.Barcode == "" {
 			// No result was found..
 			p, err = memory.AHConnector.GetProductByBarcode(productName)
 			if err != nil {
 				fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
 				return
 			}
-			barcode, err := strconv.ParseInt(productName, 10, 64)
+			//barcode, err := strconv.ParseInt(productName, 10, 64)
 			if err != nil {
 				fmt.Fprintf(w, "{ 'error': true, 'message': '%s' }", err)
 				return
 			}
-			p.Barcode = int(barcode)
+			p.Barcode = productName
 
 			//err = p.SaveToDatabase(memory.DB)
 			memory.DB.Products = append(memory.DB.Products, p)
@@ -78,10 +77,10 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	if isNumeric {
-		barcode, _ := strconv.Atoi(productName)
-		p.Barcode = barcode
-	}
+	//if isNumeric {
+	//	barcode, _ := strconv.Atoi(productName)
+	//	p.Barcode = barcode
+	//}
 
 	// Return the product object to the user 
 	json.NewEncoder(w).Encode(p)

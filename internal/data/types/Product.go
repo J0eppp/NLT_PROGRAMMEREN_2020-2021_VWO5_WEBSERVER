@@ -6,7 +6,7 @@ import (
 
 type Product struct {
 	Title string `json:"title"`
-	Barcode int `json:"barcode"`
+	Barcode string `json:"barcode"`
 	MainCategory string `json:"mainCategory"`
 	MainCategories []string `json:"mainCategories"`
 	SubCategory string `json:"subCategory"`

@@ -2,7 +2,7 @@
 	"products": [
 		{
 			"title": "AH Maïswafels",
-			"barcode": 8718906445338,
+			"barcode": "",
 			"mainCategory": "Ontbijtgranen, broodbeleg, tussendoor",
 			"mainCategories": [
 				"ontbijtgranen",
@@ -36,7 +36,7 @@
 		},
 		{
 			"title": "Tony's Chocolonely Puur",
-			"barcode": 8717677334117,
+			"barcode": "",
 			"mainCategory": "Snoep, koek, chips",
 			"mainCategories": [
 				"snoep",
@@ -65,6 +65,73 @@
 					"height": 708,
 					"width": 708,
 					"url": "https://static.ah.nl/static/product/AHI_43545239363839373837_1_LowRes_JPG.JPG"
+				}
+			]
+		},
+		{
+			"title": "AH Maïswafels",
+			"barcode": "8718906445338",
+			"mainCategory": "Ontbijtgranen, broodbeleg, tussendoor",
+			"mainCategories": [
+				"ontbijtgranen",
+				"broodbeleg",
+				"tussendoor"
+			],
+			"subCategory": "Maiswafels",
+			"brand": "AH",
+			"images": [
+				{
+					"height": 48,
+					"width": 48,
+					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_48x48_GIF.GIF"
+				},
+				{
+					"height": 80,
+					"width": 80,
+					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_80x80_JPG.JPG"
+				},
+				{
+					"height": 200,
+					"width": 200,
+					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_200x200_JPG.JPG"
+				},
+				{
+					"height": 708,
+					"width": 708,
+					"url": "https://static.ah.nl/static/product/AHI_43545237333536303032_1_LowRes_JPG.JPG"
+				}
+			]
+		},
+		{
+			"title": "AH Magere Franse kwark",
+			"barcode": "8710400197652",
+			"mainCategory": "Zuivel, eieren",
+			"mainCategories": [
+				"zuivel",
+				"eieren"
+			],
+			"subCategory": "Magere kwark",
+			"brand": "AH",
+			"images": [
+				{
+					"height": 48,
+					"width": 48,
+					"url": "https://static.ah.nl/static/product/AHI_43545239363737303736_1_48x48_GIF.GIF"
+				},
+				{
+					"height": 80,
+					"width": 80,
+					"url": "https://static.ah.nl/static/product/AHI_43545239363737303736_1_80x80_JPG.JPG"
+				},
+				{
+					"height": 200,
+					"width": 200,
+					"url": "https://static.ah.nl/static/product/AHI_43545239363737303736_1_200x200_JPG.JPG"
+				},
+				{
+					"height": 708,
+					"width": 708,
+					"url": "https://static.ah.nl/static/product/AHI_43545239363737303736_1_LowRes_JPG.JPG"
 				}
 			]
 		}
